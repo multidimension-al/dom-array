@@ -1,0 +1,25 @@
+{
+    "name": "multidimensional/dom-array",
+    "description": "Create a DOMDocument from an Array.",
+    "authors": [{
+        "name": "multidimension.al",
+        "homepage": "https://multidimension.al",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": ">=5.5",
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Multidimensional\\DomArray\\": "lib"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Multidimensional\\DomArray\\Test": "tests"
+        }
+    }
+}
