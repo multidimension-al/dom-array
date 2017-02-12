@@ -1,3 +1,9 @@
+# Dreamweaver
+_notes/
+
+# Netbeans
+nbproject/*
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
