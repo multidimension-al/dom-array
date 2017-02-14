@@ -20,7 +20,7 @@
 
 namespace Multidimensional\DomArray\Test;
 
-use Multidimensional\DomArray;
+use Multidimensional\DomArray\DOMArray;
 use PHPUnit\Framework\TestCase;
 
 class DOMArrayTest extends TestCase
