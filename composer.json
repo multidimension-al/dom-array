@@ -19,7 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Multidimensional\\DomArray\\Test": "tests"
+            "Multidimensional\\DomArray\\Test\\": "tests"
         }
     }
 }
