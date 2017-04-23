@@ -6,9 +6,9 @@
  *   / /  / / /_/ / / /_/ / /_/ / / / / / / /  __/ / / (__  ) / /_/ / / / // /_/ / /
  *  /_/  /_/\__,_/_/\__/_/\__,_/_/_/ /_/ /_/\___/_/ /_/____/_/\____/_/ /_(_)__,_/_/
  *
- *  @author Multidimension.al
- *  @copyright Copyright © 2016-2017 Multidimension.al - All Rights Reserved
- *  @license Proprietary and Confidential
+ * @author Multidimension.al
+ * @copyright Copyright © 2016-2017 Multidimension.al - All Rights Reserved
+ * @license Proprietary and Confidential
  *
  *  NOTICE:  All information contained herein is, and remains the property of
  *  Multidimension.al and its suppliers, if any.  The intellectual and
@@ -21,16 +21,17 @@
 
 namespace Multidimensional\DomArray;
 
-class DOMArray extends \DOMDocument {
-        
+class DOMArray extends \DOMDocument
+{
+
     /**
      * @param array|string $data
      * @param \DOMElement $domElement
      */
     public function loadArray($data, \DOMElement $domElement = null)
-    {        
+    {
         $domElement = is_null($domElement) ? $this : $domElement;
-        
+
         if (is_array($data)) {
             foreach ($data as $key => $value) {
                 if (is_int($key)) {
@@ -49,13 +50,11 @@ class DOMArray extends \DOMDocument {
                         $domElement->appendChild($domNode);
                     }
                 }
-                
-               $this->loadArray($value, $domNode);
-                
+
+                $this->loadArray($value, $domNode);
             }
         } else {
             $domElement->appendChild($this->createTextNode($data));
         }
-        
     }
 }

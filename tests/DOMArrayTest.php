@@ -6,9 +6,9 @@
  *   / /  / / /_/ / / /_/ / /_/ / / / / / / /  __/ / / (__  ) / /_/ / / / // /_/ / /
  *  /_/  /_/\__,_/_/\__/_/\__,_/_/_/ /_/ /_/\___/_/ /_/____/_/\____/_/ /_(_)__,_/_/
  *
- *  @author Multidimension.al
- *  @copyright Copyright © 2016-2017 Multidimension.al - All Rights Reserved
- *  @license Proprietary and Confidential
+ * @author Multidimension.al
+ * @copyright Copyright © 2016-2017 Multidimension.al - All Rights Reserved
+ * @license Proprietary and Confidential
  *
  *  NOTICE:  All information contained herein is, and remains the property of
  *  Multidimension.al and its suppliers, if any.  The intellectual and
@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase;
 
 class DOMArrayTest extends TestCase
 {
-    
+
     public function testSimple()
     {
         $array = ['simple' => 'true'];
@@ -36,7 +36,7 @@ class DOMArrayTest extends TestCase
         $expected = '<?xml version="1.0" encoding="utf-8"?><simple>true</simple>';
         $this->assertEquals($result, $expected);
     }
-    
+
     public function testComplex()
     {
         $array = ['person' => ['firstname' => 'Test', 'lastname' => 'Man', 'address' => ['street' => '123 Fake St', 'city' => 'Springfield', 'state' => 'USA']]];
@@ -67,7 +67,7 @@ class DOMArrayTest extends TestCase
         $expected = '<?xml version="1.0" encoding="utf-8"?><simple plan="123"><complex>true</complex></simple>';
         $this->assertEquals($result, $expected);
     }
-    
+
     public function testNullArray()
     {
         $array = null;
@@ -77,7 +77,7 @@ class DOMArrayTest extends TestCase
         $expected = '<?xml version="1.0" encoding="utf-8"?>';
         $this->assertEquals($result, $expected);
     }
-    
+
     public function testDifferentVersion()
     {
         $array = null;
@@ -85,9 +85,9 @@ class DOMArrayTest extends TestCase
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
         $expected = '<?xml version="1.1" encoding="utf-8"?>';
-        $this->assertEquals($result, $expected);    
+        $this->assertEquals($result, $expected);
     }
-    
+
     public function testDifferentEncoding()
     {
         $array = null;
@@ -95,9 +95,9 @@ class DOMArrayTest extends TestCase
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
         $expected = '<?xml version="1.0" encoding="iso-8859-1"?>';
-        $this->assertEquals($result, $expected);        
+        $this->assertEquals($result, $expected);
     }
-    
+
     public function testDefault()
     {
         $array = null;
@@ -107,13 +107,13 @@ class DOMArrayTest extends TestCase
         $expected = '<?xml version="1.0"?>';
         $this->assertEquals($result, $expected);
     }
-    
+
     public function testNothing()
     {
         $dom = new DOMArray();
         $result = preg_replace("/\n/", '', $dom->saveXML());
         $expected = '<?xml version="1.0"?>';
-        $this->assertEquals($result, $expected);    
+        $this->assertEquals($result, $expected);
     }
 
     public function testTrackRequest()
