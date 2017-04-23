@@ -46,7 +46,18 @@ class DOMArrayTest extends TestCase
         $expected = '<?xml version="1.0" encoding="utf-8"?><person><firstname>Test</firstname><lastname>Man</lastname><address><street>123 Fake St</street><city>Springfield</city><state>USA</state></address></person>';
         $this->assertEquals($result, $expected);
     }
-    
+
+    public function testExtraComplex()
+    {
+        $array = ['person' => ['firstname' => 'Test', 'lastname' => 'Man', 'address' => [0 => ['street' => '123 Fake St', 'city' => 'Springfield', 'state' => 'USA'], 1 => ['street' => '456 Real Ave', 'city' => 'New York', 'state' => 'NY']]]];
+        $dom = new DOMArray('1.0', 'utf-8');
+        $dom->loadArray($array);
+        $result = preg_replace("/\n/", '', $dom->saveXML());
+        $expected = '<?xml version="1.0" encoding="utf-8"?><person><firstname>Test</firstname><lastname>Man</lastname><address><street>123 Fake St</street><city>Springfield</city><state>USA</state></address><address><street>456 Real Ave</street><city>New York</city><state>NY</state></address></person>';
+        $this->assertEquals($result, $expected);
+    }
+
+
     public function testAttribute()
     {
         $array = ['simple' => ['complex' => 'true', '@plan' => '123']];
@@ -103,5 +114,15 @@ class DOMArrayTest extends TestCase
         $result = preg_replace("/\n/", '', $dom->saveXML());
         $expected = '<?xml version="1.0"?>';
         $this->assertEquals($result, $expected);    
+    }
+
+    public function testTrackRequest()
+    {
+        $array = ['TrackRequest' => ['TrackID' => [0 => ['@ID' => 'EJ123456780US'], 1 => ['@ID' => 'EJ123456789US'], 2 => ['@ID' => 'EJ123456781US']]]];
+        $dom = new DOMArray();
+        $dom->loadArray($array);
+        $result = preg_replace("/\n/", '', $dom->saveXML());
+        $expected = '<?xml version="1.0"?><TrackRequest><TrackID ID="EJ123456780US"/><TrackID ID="EJ123456789US"/><TrackID ID="EJ123456781US"/></TrackRequest>';
+        $this->assertEquals($expected, $result);
     }
 }
