@@ -119,10 +119,20 @@ class DOMArrayTest extends TestCase
     public function testTrackRequest()
     {
         $array = ['TrackRequest' => ['TrackID' => [0 => ['@ID' => 'EJ123456780US'], 1 => ['@ID' => 'EJ123456789US'], 2 => ['@ID' => 'EJ123456781US']]]];
-        $dom = new DOMArray();
+        $dom = new DOMArray('1.0', 'utf-8');
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
-        $expected = '<?xml version="1.0"?><TrackRequest><TrackID ID="EJ123456780US"/><TrackID ID="EJ123456789US"/><TrackID ID="EJ123456781US"/></TrackRequest>';
+        $expected = '<?xml version="1.0" encoding="utf-8"?><TrackRequest><TrackID ID="EJ123456780US"/><TrackID ID="EJ123456789US"/><TrackID ID="EJ123456781US"/></TrackRequest>';
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testAddressValidateRequest()
+    {
+        $array = ['AddressValidateRequest' => ['Address' => [0 => ['@ID' => 123, 'FirmName' => 'XYZ Corp', 'Address2' => '123 Fake St.', 'City' => 'Los Angeles', 'State' => 'NY', 'Zip5' => '90210', 'Address1' => null, 'Urbanization' => null, 'Zip4' => null], 1 => ['@ID' => 456, 'FirmName' => 'XYZ Corp', 'Address2' => '123 Fake St.', 'City' => 'Los Angeles', 'State' => 'NY', 'Zip5' => '90210', 'Address1' => null, 'Urbanization' => null, 'Zip4' => null], 2 => ['@ID' => 789, 'FirmName' => 'XYZ Corp', 'Address2' => '123 Fake St.', 'City' => 'Los Angeles', 'State' => 'NY', 'Zip5' => '90210', 'Address1' => null, 'Urbanization' => null, 'Zip4' => null]]]];
+        $dom = new DOMArray('1.0', 'utf-8');
+        $dom->loadArray($array);
+        $result = preg_replace("/\n/", '', $dom->saveXML());
+        $expected = '<?xml version="1.0" encoding="utf-8"?><AddressValidateRequest><Address ID="123"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address><Address ID="456"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address><Address ID="789"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address></AddressValidateRequest>';
         $this->assertEquals($expected, $result);
     }
 }
