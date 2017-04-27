@@ -135,4 +135,13 @@ class DOMArrayTest extends TestCase
         $expected = '<?xml version="1.0" encoding="utf-8"?><AddressValidateRequest><Address ID="123"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address><Address ID="456"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address><Address ID="789"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address></AddressValidateRequest>';
         $this->assertEquals($expected, $result);
     }
+
+    public function testBoolean(){
+        $array = ['boolean' => ['true' => true, 'false' => false]];
+        $dom = new DOMArray('1.0', 'utf-8');
+        $dom->loadArray($array);
+        $result = preg_replace("/\n/", '', $dom->saveXML());
+        $expected = '<?xml version="1.0" encoding="utf-8"?><boolean><true>true</true><false>false</false></boolean>';
+        $this->assertEquals($expected, $result);
+    }
 }
