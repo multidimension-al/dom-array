@@ -136,7 +136,8 @@ class DOMArrayTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBoolean(){
+    public function testBoolean()
+    {
         $array = ['boolean' => ['true' => true, 'false' => false]];
         $dom = new DOMArray('1.0', 'utf-8');
         $dom->loadArray($array);
