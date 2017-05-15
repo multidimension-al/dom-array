@@ -6,9 +6,9 @@
  *   / /  / / /_/ / / /_/ / /_/ / / / / / / /  __/ / / (__  ) / /_/ / / / // /_/ / /
  *  /_/  /_/\__,_/_/\__/_/\__,_/_/_/ /_/ /_/\___/_/ /_/____/_/\____/_/ /_(_)__,_/_/
  *
- * @author Multidimension.al
- * @copyright Copyright © 2016-2017 Multidimension.al - All Rights Reserved
- * @license Proprietary and Confidential
+ *  @author Multidimension.al
+ *  @copyright Copyright © 2016-2017 Multidimension.al - All Rights Reserved
+ *  @license Proprietary and Confidential
  *
  *  NOTICE:  All information contained herein is, and remains the property of
  *  Multidimension.al and its suppliers, if any.  The intellectual and
@@ -132,7 +132,7 @@ class DOMArrayTest extends TestCase
         $dom = new DOMArray('1.0', 'utf-8');
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
-        $expected = '<?xml version="1.0" encoding="utf-8"?><AddressValidateRequest><Address ID="123"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address><Address ID="456"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address><Address ID="789"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1></Address1><Urbanization></Urbanization><Zip4></Zip4></Address></AddressValidateRequest>';
+        $expected = '<?xml version="1.0" encoding="utf-8"?><AddressValidateRequest><Address ID="123"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5></Address><Address ID="456"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5></Address><Address ID="789"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5></Address></AddressValidateRequest>';
         $this->assertEquals($expected, $result);
     }
 
@@ -143,6 +143,16 @@ class DOMArrayTest extends TestCase
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
         $expected = '<?xml version="1.0" encoding="utf-8"?><boolean><true>true</true><false>false</false></boolean>';
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testFlag()
+    {
+        $array = ['xml' => ['nullthing' => null, 'nothing' => '', 'something' => 'hello']];
+        $dom = new DOMArray('1.0', 'utf-8');
+        $dom->loadArray($array);
+        $result = preg_replace("/\n/", '', $dom->saveXML());
+        $expected = '<?xml version="1.0" encoding="utf-8"?><xml><nothing/><something>hello</something></xml>';
         $this->assertEquals($expected, $result);
     }
 }
