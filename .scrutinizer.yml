@@ -1,0 +1,25 @@
+filter:
+  paths:
+  - lib/*
+  - tests/*
+tools:
+  external_code_coverage:
+    runs: 2
+    timeout: 600
+  php_code_coverage: false
+  php_code_sniffer:
+    config:
+      standard: PSR2
+    filter:
+      paths:
+      - lib/*
+      - tests/*
+  php_cpd:
+    enabled: true
+  php_cs_fixer:
+    config:
+      level: psr2
+  php_loc:
+    enabled: true
+    excluded_dirs:
+    - tests/*
