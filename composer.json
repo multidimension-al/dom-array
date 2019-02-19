@@ -1,6 +1,7 @@
 {
   "name": "multidimensional/dom-array",
   "description": "Create a DOMDocument from an Array.",
+  "license": "MIT",
   "authors": [
     {
       "name": "multidimension.al",
