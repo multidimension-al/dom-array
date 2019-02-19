@@ -132,7 +132,7 @@ class DOMArrayTest extends TestCase
         $dom = new DOMArray('1.0', 'utf-8');
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
-        $expected = '<?xml version="1.0" encoding="utf-8"?><AddressValidateRequest><Address ID="123"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5></Address><Address ID="456"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5></Address><Address ID="789"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5></Address></AddressValidateRequest>';
+        $expected = '<?xml version="1.0" encoding="utf-8"?><AddressValidateRequest><Address ID="123"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><Urbanization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><Zip4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></Address><Address ID="456"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><Urbanization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><Zip4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></Address><Address ID="789"><FirmName>XYZ Corp</FirmName><Address2>123 Fake St.</Address2><City>Los Angeles</City><State>NY</State><Zip5>90210</Zip5><Address1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><Urbanization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><Zip4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/></Address></AddressValidateRequest>';
         $this->assertEquals($expected, $result);
     }
 
@@ -152,7 +152,7 @@ class DOMArrayTest extends TestCase
         $dom = new DOMArray('1.0', 'utf-8');
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
-        $expected = '<?xml version="1.0" encoding="utf-8"?><xml><nothing/><something>hello</something></xml>';
+        $expected = '<?xml version="1.0" encoding="utf-8"?><xml><nothing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><something>hello</something></xml>';
         $this->assertEquals($expected, $result);
     }
 }
