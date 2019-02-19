@@ -152,7 +152,7 @@ class DOMArrayTest extends TestCase
         $dom = new DOMArray('1.0', 'utf-8');
         $dom->loadArray($array);
         $result = preg_replace("/\n/", '', $dom->saveXML());
-        $expected = '<?xml version="1.0" encoding="utf-8"?><xml><nullthing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><nothing /><something>hello</something></xml>';
+        $expected = '<?xml version="1.0" encoding="utf-8"?><xml><nullthing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/><nothing/><something>hello</something></xml>';
         $this->assertEquals($expected, $result);
     }
 }
