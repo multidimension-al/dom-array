@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/multidimensional/dom-array/d/total.svg)](https://packagist.org/packages/multidimensional/dom-array)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/multidimension-al/dom-array/badges/quality-score.png)](https://scrutinizer-ci.com/g/multidimension-al/dom-array/)
 
-This library extends the DOMDocument function by adding a ```loadArray``` function that converts PHP arrays to DOMDocument classes that can be used to generate XML, HTML and other types of code.
+This library extends the DOMDocument function by adding a ```loadArray``` function that converts PHP arrays to DOMDocument classes that can be used to generate XML, HTML and other types of code. This library does the opposite of our [XML-Array](https://github.com/multidimension-al/xml-array) library which converts XML to a PHP array.
 
 ## Requirements
 
