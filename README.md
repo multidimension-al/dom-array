@@ -59,6 +59,7 @@ echo $xml;
 
 As shown in the example, attributes can be assigned by adding an ```@``` symbol before the attribute name.
 
+_Null_ and _Empty_ arrays will generate a DOMDocument with no elements.
 
 # Contributing
 
