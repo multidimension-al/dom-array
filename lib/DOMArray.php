@@ -55,7 +55,6 @@ class DOMArray extends \DOMDocument
                             $domElement->appendChild($domNode);
                         }
                     }
-
                 }
                 $this->loadArray($value, $domNode);
             }
