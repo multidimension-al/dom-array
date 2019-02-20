@@ -44,7 +44,7 @@ How to use in your code:
 
 ```php
 $dom = new DOMArray('1.0', 'utf-8');
-$array = ['item' => ['subelement' => 'true', '@id' => '123']];
+$array = ['item' => ['subitem' => 'true', '@id' => '123']];
 $dom->loadArray($array);
 $xml = $dom->saveXML();
 
