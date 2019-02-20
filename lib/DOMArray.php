@@ -61,7 +61,7 @@ class DOMArray extends \DOMDocument
             }
         } elseif (is_bool($data) === true) {
             $domElement->appendChild($this->createTextNode((boolval($data) ? 'true' : 'false')));
-        } elseif (!empty($data)) {
+        } elseif (!empty($data) || is_numeric($data)) {
             $domElement->appendChild($this->createTextNode($data));
         }
     }
